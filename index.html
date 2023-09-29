@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body onload="load()">
+  <h4 id="choosefirst">Choose your first upgrade.</h4>
+  <div id="firstbuttons">
+  <button id="firstlayup">Upgrade layup (+0.1 ppg)</button>
+  <button id="firststeal">Upgrade steal (+0.01 spg)</button>
+  <button id="firstrebound">Upgrade rebound (+0.2 rpg)</button>
+  <button id="firstpass">Upgrade pass (+0.3 apg)</button>
+  </div>
+  <div id="gamelayout">
+    <div class="split left">
+      <button id="prestigebutton">Prestige</button>
+    <h1>Idle NBA</h1>
+  <h3>note: the permanent upgrade part of this game is not finished yet</h3>
+      <h4>money</h4>
+  <a href="https://idlenba-instruct.coder-click.repl.co" target="_blank">How to play</a><br>
+ <button id="reset">delete save (doesnt delete current data)</button><br>
+  <button id="reset2">reset (reload page to take effect)</button>
+  <button id="yeet"></button>
+  <p></p>
+  <button id="simgame">Sim game</button>
+  <h3 id="playername">name</h3><br>
+  <h3>Upgrade points:</h3>
+  <h3 id="money">0</h3><br>
+  <h3>Total Income: <var id="totalvalue"></var></h3><br>
+    <h5>Tokens: <var id="tokens">0</var></h5>
+    <h5>Injury cooldown: <var id="injcooldown">0</var> seconds</h5>
+    <h3>Stats:</h3>
+    <h4>points per game: <var id="ppg">0</var></h4>
+    <h4>assists per game: <var id="apg">0</var></h4>
+    <h4>rebounds per game: <var id="rpg">0</var></h4>
+    <h4>steals per game: <var id="spg">0</var></h4>
+    <h4>blocks per game: <var id="bpg">0</var></h4>
+    <h4>40 yd dash: <var id="40yd">0</var></h4>
+      <div id="abilities">
+        <img id="ffability" src="images/fastforward.png">
+        <img id="pdability" src="images/pricedown.png">  
+        <img id="fuability" src="images/freeupgrade.png"><br>
+        <var id="ffcooldown">---00:00:00---</var><var id="pdcooldown">---00:00:00---</var><var id="fucooldown">---00:00:00---</var>
+      </div>
+      <div class="split right">
+    <h4>overall: <var id="overall1">0</var></h4><circle class="circle" cx="90" cy="90" r="80" />
+    <button id="cycleshop">Cycle shop</button>
+      <table id="attr_shop" style="width:100%" style="height:90%">
+        <tr>
+          <th>|Attribute|</th>
+          <th>|Value|</th>
+          <th>|Cost to upgrade|</th>
+          <th>---</th>
+        </tr>
+        <tr>
+          <td class="card-title">3pt shooting</td>
+          <td class="card-text"><var id="threeshooting1"></var></td>
+          <td class="card-text"><var id="c_threeshooting"></var></td>
+          <td><a id="upthreeshooting" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>
+          <td class="card-title">mid shooting</td>
+          <td class="card-text"><var id="midshooting1"></var></td>
+          <td class="card-text"><var id="c_midshooting"></var></td>
+          <td><a id="upmidshooting" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>
+          <td class="card-title">layup</td>
+          <td class="card-text"><var id="layup1"></var></td>
+          <td class="card-text"><var id="c_layup"></var></td>
+          <td><a id="uplayup" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">dunk</td>
+          <td class="card-text"><var id="dunk1"></var></td>
+          <td class="card-text"><var id="c_dunk"></var></td>
+          <td><a id="updunk" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">pass</td>
+          <td class="card-text"><var id="pass1"></var></td>
+          <td class="card-text"><var id="c_pass"></var></td>
+          <td><a id="uppass" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">handle</td>
+          <td class="card-text"><var id="handle1"></var></td>
+          <td class="card-text"><var id="c_handle"></var></td>
+          <td><a id="uphandle" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">interior defense</td>
+          <td class="card-text"><var id="indefense1"></var></td>
+          <td class="card-text"><var id="c_indefense"></var></td>
+          <td><a id="upindefense" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">exterior defense</td>
+          <td class="card-text"><var id="exdefense1"></var></td>
+          <td class="card-text"><var id="c_exdefense"></var></td>
+          <td><a id="upexdefense" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">block</td>
+          <td class="card-text"><var id="block1"></var></td>
+          <td class="card-text"><var id="c_block"></var></td>
+          <td><a id="upblock" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">steal</td>
+          <td class="card-text"><var id="steal1"></var></td>
+          <td class="card-text"><var id="c_steal"></var></td>
+          <td><a id="upsteal" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">rebound</td>
+          <td class="card-text"><var id="rebound1"></var></td>
+          <td class="card-text"><var id="c_rebound"></var></td>
+          <td><a id="uprebound" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">jump</td>
+          <td class="card-text"><var id="jump1"></var></td>
+          <td class="card-text"><var id="c_jump"></var></td>
+          <td><a id="upjump" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">speed</td>
+          <td class="card-text"><var id="speed1"></var></td>
+          <td class="card-text"><var id="c_speed"></var></td>
+          <td><a id="upspeed" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>  
+          <td class="card-title">stamina</td>
+          <td class="card-text"><var id="stamina1"></var></td>
+          <td class="card-text"><var id="c_stamina"></var></td>
+          <td><a id="upstamina" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+      </table><br>
+      <table id="perm_shop">
+        <tr>
+          <th>|Upgrade|</th>
+          <th>|Effect|</th>
+          <th>|Tokens to upgrade:|</th>
+          <th>---</th>
+        </tr>
+        <tr>
+          <td>price decrease</td>
+          <td><var id="price_mult"></var> multiplier</td>
+          <td><var id="c_price_mult"></var></td>
+          <td><a id="up_price_mult" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+        <tr>
+          <td>income increase</td>
+          <td><var id="income_mult"></var> multiplier</td>
+          <td><var id="c_income_mult"></var></td>
+          <td><a id="up_income_mult" class="btn btn-primary">Upgrade</a></td>
+        </tr>
+      </table>
+      </div>
+    </div>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js" integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.js" integrity="sha512-EZhmSl/hiKyEHklogkakFnSYa5mWsLmTC4ZfvVzhqYNLPbXKAXsjUYRf2O9OlzQN33H0xBVfGSEIUeqt9astHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/scripts/store.legacy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js" integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="scripts/sleep.js">
+      sleep.prevent();
+    </script>
+    <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js'
+
+    // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js'
+
+    // Add Firebase products that you want to use
+    import { getAuth } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js'
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"
+
+    var h_money;
+    var h_threeshooting;
+    var h_midshooting;
+    var h_layup;
+    var h_dunk;
+    var h_pass;
+    var h_handle;
+    var h_indefense;
+    var h_exdefense;
+    var h_block;
+    var h_steal;
+    var h_rebound;
+    var h_jump;
+    var h_speed;
+    var h_stamina;
+    var h_played;
+    var h_ffcooldown;
+    var h_pdcooldown;
+    var h_fucooldown;
+    var h_prestige;
+
+    var h_money2 = document.getElementById('money');
+    var h_threeshooting2 = document.getElementById('threeshooting1');
+    var h_midshooting2 = document.getElementById('midshooting1');
+    var h_layup2 = document.getElementById('layup1');
+    var h_dunk2 = document.getElementById('dunk1');
+    var h_pass2 = document.getElementById('pass1');
+    var h_handle2 = document.getElementById('handle1');
+    var h_indefense2 = document.getElementById('indefense1');
+    var h_exdefense2 = document.getElementById('exdefense1');
+    var h_block2 = document.getElementById('block1');
+    var h_steal2 = document.getElementById('steal1');
+    var h_rebound2 = document.getElementById('rebound1');
+    var h_jump2 = document.getElementById('jump1');
+    var h_speed2 = document.getElementById('speed1');
+    var h_stamina2 = document.getElementById('stamina1');
+
+    function checkifstring(value) {
+      if (typeof value == string) {
+        var x = Number(value);
+        return x;
+      } else {
+        return value;
+      }
+    }
+
+    function h_reload() {
+      h_money = checkifstring(h_money2.innerText);
+      h_threeshooting = checkifstring(h_threeshooting2.innerText);
+      h_midshooting = checkifstring(h_midshooting2.innerText);
+      h_layup = checkifstring(h_layup2.innerText);
+      h_dunk = checkifstring(h_dunk2.innerText);
+      h_pass = checkifstring(h_pass2.innerText);
+      h_handle = checkifstring(h_handle2.innerText);
+      h_indefense = checkifstring(h_indefense2.innerText);
+      h_exdefense = checkifstring(h_exdefense2.innerText);
+      h_block = checkifstring(h_block2.innerText);
+      h_steal = checkifstring(h_steal2.innerText);
+      h_rebound = checkifstring(h_rebound2.innerText);
+      h_jump = checkifstring(h_jump2.innerText);
+      h_speed = checkifstring(h_speed2.innerText);
+      h_stamina = checkifstring(h_stamina2.innerText);
+      h_played = checkifstring(h_played2.innerText);
+    }
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.0"></script>
+<script>
+    const { Client, Databases, ID } = Appwrite;
+    const client = new Client();
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('idle-nba');
+
+  
+</script>
+</body>
+</html>

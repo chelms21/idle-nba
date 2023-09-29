@@ -1,0 +1,73 @@
+setInterval(, 1000);
+
+var comma1 = mtr.indexOf(",", 2);
+  var comma2 = mtr.indexOf(",", comma1 + 2);
+  var comma3 = mtr.indexOf(",", comma2 + 2);
+  var comma4 = mtr.indexOf(",", comma3 + 2);
+  var comma5 = mtr.indexOf(",", comma4 + 2);
+  var comma6 = mtr.indexOf(",", comma5 + 2);
+  var comma7 = mtr.indexOf(",", comma6 + 2);
+  var comma8 = mtr.indexOf(",", comma7 + 2);
+  var comma9 = mtr.indexOf(",", comma8 + 2);
+  var comma10 = mtr.indexOf(",", comma9 + 2);
+  var comma11 = mtr.indexOf(",", comma10 + 2);
+  var comma12 = mtr.indexOf(",", comma11 + 2);
+  var comma13 = mtr.indexOf(",", comma12 + 2);
+  var comma14 = mtr.indexOf(",", comma13 + 2);
+  var comma15 = mtr.indexOf(",", comma14 + 2);
+  console.log(comma1);
+  console.log(mtr);
+  document.getElementById("ppg").innerText = mtr;
+  money = Number(mtr.substr(comma1 - 2, 2))
+  threeshooting = Number(mtr.substr(comma2 - 2, 2))
+  midshooting = Number(mtr.substr(comma3 - 2, 2))
+  layup = Number(mtr.substr(comma4 - 2, 2))
+  dunk = Number(mtr.substr(comma5 - 2, 2))
+  pass = Number(mtr.substr(comma6 - 2, 2))
+  handle = Number(mtr.substr(comma7 - 2, 2))
+  indefense = Number(mtr.substr(comma8 - 2, 2))
+  exdefense = Number(mtr.substr(comma9 - 2, 2))
+  block = Number(mtr.substr(comma10 - 2, 2))
+  steal = Number(mtr.substr(comma11 - 2, 2))
+  rebound = Number(mtr.substr(comma12 - 2, 2))
+  jump = Number(mtr.substr(comma13 - 2, 2))
+  speed = Number(mtr.substr(comma14 - 2, 2))
+  stamina = Number(mtr.substr(comma15 - 2, 2))
+  reload();
+
+
+
+
+
+
+
+function text2Binary(string) {
+    return string.split('').map(function (char) {
+        return char.charCodeAt(0).toString(2);
+    }).join(' ');
+}
+
+var binary = text2Binary(`money: ${money}, threeshooting: ${threeshooting}, midshooting: ${midshooting}, layup: ${layup}, dunk: ${dunk}, pass: ${pass}, handle: ${handle}, indefense: ${indefense}, exdefense: ${exdefense}, block: ${block}, steal: ${steal}, rebound: ${rebound}, jump: ${jump}, speed: ${speed}, stamina: ${stamina},`);
+
+function download(data, filename, type) {
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
+}
+
+document.getElementById('savefilebutton').onclick = function() {
+  binary = text2Binary(`money: ${money}, threeshooting: ${threeshooting}, midshooting: ${midshooting}, layup: ${layup}, dunk: ${dunk}, pass: ${pass}, handle: ${handle}, indefense: ${indefense}, exdefense: ${exdefense}, block: ${block}, steal: ${steal}, rebound: ${rebound}, jump: ${jump}, speed: ${speed}, stamina: ${stamina},`);
+  download(binary, "idlenbasave.txt", "text/plain")
+}

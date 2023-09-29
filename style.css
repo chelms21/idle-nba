@@ -1,0 +1,114 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+h4 {
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+}
+
+#firstbuttons {
+  text-align: center;
+}
+
+label {
+  cursor: pointer;
+}
+
+textarea {
+  width: 400px;
+  height: 150px;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
+tr {
+  text-align: center;
+}
+
+table {
+  height: 90%;
+  width: 100%;
+}
+
+#attr_shop {
+  height: 90%;
+  width: 100%;
+}
+
+#perm_shop {
+  height: 20%;
+  width: 100%;
+}
+
+#ffability {
+  width: 100px;
+  height: 100px;
+}
+
+#pdability {
+  width: 100px;
+  height: 100px;
+}
+
+#fuability {
+  width: 100px;
+  height: 100px;
+}
+
+#abilities {
+  text-align: center;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  height: 100%;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
